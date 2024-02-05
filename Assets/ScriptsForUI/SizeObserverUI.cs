@@ -21,6 +21,19 @@ public class SizeObserverUI : MonoBehaviour
         _myRectTransform.sizeDelta = _observedElement.sizeDelta + _ofset;
     }
 
+    private void OnValidate()
+    {
+        _myRectTransform = GetComponent<RectTransform>();
+
+        if (_observedElement == null)
+        {
+            Debug.LogError("Не вказано елемент для спостереження!");
+            return;
+        }
+
+        _myRectTransform.sizeDelta = _observedElement.sizeDelta + _ofset;
+    }
+
     void Update()
     {
         if (_observedElement.sizeDelta != _myRectTransform.sizeDelta)
